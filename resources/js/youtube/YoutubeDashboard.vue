@@ -19,7 +19,7 @@
     		}
     	},
     	created() {
-    		Search({apikey: 'AIzaSyAFn9IUTghHLVO2ueKCiz_zYW2q0RuBYUg',
+    		Search({apikey: '#',
     			term: 'laravel repository'
     		}, 
     			response => this.videos = response);
