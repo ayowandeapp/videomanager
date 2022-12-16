@@ -5,7 +5,9 @@
 		  <div class="card-body">
 		    <h4 class="card-title">{{videoTitle}}</h4>
 		    <p class="card-text">{{videoDescription}}</p>
-		    <a href="#" class="btn btn-primary">See Profile</a>
+		    <router-link class="btn btn-primary" v-bind:to="{name:'videoDetail', params:{id:video.id.videoId,video:video}}">
+				Home
+			</router-link>
 		  </div>
 		</div>
 	</div>

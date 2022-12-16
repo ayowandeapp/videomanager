@@ -15,7 +15,7 @@
     </head>
     <body>
         <div id="app">
-            <youtube-dashboard></youtube-dashboard>
+            <router-view></router-view>
 
         </div>
         <script type="text/javascript" src="js/app.js"></script>

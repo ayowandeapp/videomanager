@@ -9,6 +9,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 window.Axios = require('axios').default;
+window.VueRouter = require('vue-router').default;
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,7 +23,8 @@ window.Axios = require('axios').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('youtube-dashboard', require('./youtube/YoutubeDashboard.vue').default);
+const youtubeDashboard = Vue.component('youtube-dashboard', require('./youtube/YoutubeDashboard.vue').default);
+const videoDetail = Vue.component('video-detail', require('./youtube/VideoDetail.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,6 +32,26 @@ Vue.component('youtube-dashboard', require('./youtube/YoutubeDashboard.vue').def
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-});
+//define the vue route
+const routes = [
+{
+    name: "youtubeDashboard",
+    path: "/",
+    component: youtubeDashboard
+},
+{
+    name: "videoDetail",
+    path: "/video/:id",
+    component: videoDetail
+},]
+
+//register modules
+Vue.use(VueRouter,axios);
+
+const router = new VueRouter({ mode: 'hash', routes: routes});
+
+new Vue(
+    Vue.util.extend(
+        { router }
+        )
+    ).$mount('#app')
