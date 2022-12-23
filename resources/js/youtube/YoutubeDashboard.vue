@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="container-fluid">
 		
 			<input type="text" class="form-control" v-model="searchInput" v-on:keyup="handleSearch()" style="width: 500px" >
 			<a href="javascript:void(0);" style="margin-left: 300px;"><i class="fa fa-search" ></i></a>

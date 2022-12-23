@@ -1,7 +1,6 @@
 <template>
 	<div class="row">
 		<video-item v-for ="video in videos" v-bind:video="video" :key="video.id.videoId"></video-item>
-
 	</div>
 </template>
 <script>
