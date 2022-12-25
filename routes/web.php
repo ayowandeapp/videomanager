@@ -20,4 +20,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::post('/video/comments','CommentController@store');

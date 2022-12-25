@@ -42,14 +42,17 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        $id = auth()->user()->id;
         $data = $request->validate([
             'body'=>'required',
             'videoId' => 'required']);
+        $user_id = (Auth::check()) ? $id : 1;
         $comment = Comment::create([
             'body'=> $data['body'],
             'is_published'=> 1,
-            'user_id'=> Auth::user()->id,
-            'video_id'=> $data['videoId']]);
+            'user_id'=> $user_id,
+            'video_id'=> $data['videoId']
+            ]);
 
         event(new CommentCreated($comment));
 

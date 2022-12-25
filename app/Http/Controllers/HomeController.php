@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //echo auth()->user()->id; die;
         return view('home');
     }
 }

@@ -21,7 +21,7 @@
 			<div class="col-lg-12" v-for="comment in comments">
                 <div class="card text-white bg-dark">
                     <div class="card-body">
-                    	<h3 class="card-title font-20 mt-0">{{comment.created_at}}</h3>
+                    	<small class="card-title font-20 mt-0">{{comment.created_at}}</small>
                         <p class="card-text">{{comment.body}}</p>
                         <a href="#" class="btn btn-danger">Button</a>
                     </div>
@@ -62,7 +62,7 @@
     		window.Echo.channel('comments').listen('.comment.created', event => {
     			console.log('event',event);
     			this.fetchComments();
-    		})
+    		});
     	},
     	methods: {
     		fetchComments(){
@@ -75,8 +75,8 @@
     		},
     		createComments(){
     			var url = window.Laravel.basePath;
-    			//alert(this.videoId + this.body);
-    			axios.post(url+'api/video/comments',{ videoId:this.videoId, body:this.body }).then(response=>{
+    			alert(this.videoId + this.body);
+    			axios.post(url+'video/comments',{ videoId:this.videoId, body:this.body }).then(response=>{
     				this.body='';
     				//console.log(response.data);
     				this.fetchComments();

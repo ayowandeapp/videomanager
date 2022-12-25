@@ -1932,20 +1932,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    'comments': _comments_Comments_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    'add-comment': AddComment
+    'comments': _comments_Comments_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      videoId: null,
-      url: null,
-      video: null
+      videoId: '',
+      url: '',
+      video: ''
     };
   },
   created: function created() {
     var _this = this;
     _GetVideo__WEBPACK_IMPORTED_MODULE_1___default()({
-      apikey: 'AIzaSyAFn9IUTghHLVO2ueKCiz_zYW2q0RuBYUg',
       videoId: this.$route.params.id
     }, function (response) {
       console.log(response);
@@ -2096,8 +2094,8 @@ __webpack_require__.r(__webpack_exports__);
     createComments: function createComments() {
       var _this3 = this;
       var url = window.Laravel.basePath;
-      //alert(this.videoId + this.body);
-      axios.post(url + 'api/video/comments', {
+      alert(this.videoId + this.body);
+      axios.post(url + 'video/comments', {
         videoId: this.videoId,
         body: this.body
       }).then(function (response) {
@@ -2165,7 +2163,7 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "container-fluid"
-  }, [_c("div", {
+  }, [_vm.video ? _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-8"
@@ -2177,7 +2175,7 @@ var render = function render() {
       height: "315",
       src: _vm.url
     }
-  })])])]), _vm._v(" "), _c("div", {
+  })])])]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-lg-12"
@@ -2412,7 +2410,7 @@ var render = function render() {
       staticClass: "card text-white bg-dark"
     }, [_c("div", {
       staticClass: "card-body"
-    }, [_c("h3", {
+    }, [_c("small", {
       staticClass: "card-title font-20 mt-0"
     }, [_vm._v(_vm._s(comment.created_at))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
@@ -60798,12 +60796,13 @@ __webpack_require__.r(__webpack_exports__);
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 var BASE_URL = 'https://www.googleapis.com/youtube/v3/videos';
 module.exports = function (options, callback) {
-  if (!options.apikey) {
-    throw new Error('youtube search require a key');
-  }
+  // if (!options.apikey) {
+  // 	throw new Error('youtube search require a key');
+  // }
+  //alert(options.videoId);
   var params = {
     part: 'snippet',
-    key: options.apikey,
+    key: 'AIzaSyAFn9IUTghHLVO2ueKCiz_zYW2q0RuBYUg',
     id: options.videoId,
     type: 'video'
   };

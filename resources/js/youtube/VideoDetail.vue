@@ -6,7 +6,7 @@
 </style>
 <template>
 	<div class="container-fluid">
-		<div class="row">
+		<div class="row" v-if="video">
 			<div class="col-md-8">
 				<h2>{{video.snippet.title}}</h2>
 				<br>
@@ -19,7 +19,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
-				<comments v-bind:videoId = 'videoId'></comments>
+				<comments v-bind:videoId="videoId"></comments>
 			</div>
 		</div>
 	</div>
@@ -31,21 +31,19 @@
 
     export default {
     	components: {
-    		'comments': Comments, 
-    		'add-comment': AddComment
+    		'comments': Comments,
 
     	},
     	data(){
     		return{
-    			videoId: null,
-    			url: null,
-    			video: null
+    			videoId: '',
+    			url: '',
+    			video: ''
     			
     		}
     	},
-    	created() {    		
+    	created() {   		
     		GetVideo({
-    			apikey: 'AIzaSyAFn9IUTghHLVO2ueKCiz_zYW2q0RuBYUg',
     			videoId: this.$route.params.id
     		},
     		response => {
