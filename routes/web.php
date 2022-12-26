@@ -19,6 +19,7 @@ Route::get('/activate-account/{token}','GuestController@verify')->name('activate
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::post('/video/comments','CommentController@store');
+Route::get('/user/playlist','PlaylistController@index');
+Route::post('/user/playlist','PlaylistController@store');
+Route::post('/user/playlist-entry','PlaylistEntryController@store');
