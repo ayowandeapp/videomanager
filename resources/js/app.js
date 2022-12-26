@@ -8,9 +8,19 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+
 window.Axios = require('axios').default;
 window.VueRouter = require('vue-router').default;
 
+window.eventBus = new Vue({});
+import Notifications from 'vue-notification'
+ 
+/*
+or for SSR:
+import Notifications from 'vue-notification/dist/ssr.js'
+*/
+ 
+Vue.use(Notifications)
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -25,6 +35,7 @@ window.VueRouter = require('vue-router').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 const youtubeDashboard = Vue.component('youtube-dashboard', require('./youtube/YoutubeDashboard.vue').default);
 const videoDetail = Vue.component('video-detail', require('./youtube/VideoDetail.vue').default);
+const myPlaylist = Vue.component('my-playlists', require('./youtube/MyPlaylists.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -43,6 +54,11 @@ const routes = [
     name: "videoDetail",
     path: "/video/:id",
     component: videoDetail
+},
+{
+    name: "myPlaylist",
+    path: "/user/myplaylist",
+    component: myPlaylist
 },]
 
 //register modules
