@@ -1,7 +1,7 @@
 <template>
 	<div class="container-fluid">
 		
-			<input type="text" class="form-control" v-model="searchInput" v-on:keyup="handleSearch()" style="width: 500px" >
+			<input type="text" class="form-control" v-model="searchInput" v-on:keyup.enter="handleSearch()" style="width: 500px" >
 			<a href="javascript:void(0);" style="margin-left: 300px;"><i class="fa fa-search" ></i></a>
 			
 		<video-group v-bind:videos="videos"></video-group>
@@ -24,7 +24,7 @@
     		}
     	},
     	created() {
-    		Search({apikey: 'AIzaSyAFn9IUTghHLVO2ueKCiz_zYW2q0RuBYUg',
+    		Search({apikey: '',
     			term: 'laravel repository',
     			items:10
     		}, 
@@ -32,7 +32,7 @@
     	},
     	methods: {
     		handleSearch(){
-	    		Search({apikey: 'AIzaSyAFn9IUTghHLVO2ueKCiz_zYW2q0RuBYUg',
+	    		Search({apikey: '',
 	    			term: this.searchInput,
 	    			items:10
 	    		}, 

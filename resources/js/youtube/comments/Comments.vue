@@ -27,18 +27,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-12">
-                <div class="card text-white bg-dark">
-                    <div class="card-body">
-                        <h3 class="card-title font-20 mt-0">Special title treatment</h3>
-                        <p class="card-text">With supporting text below as a natural lead-in to
-                            additional content.</p>
-                        <a href="#" class="btn btn-danger">Button</a>
-                    </div>
-                </div>
-            </div>
-
 		</div>
 
 	</div>
@@ -75,7 +63,7 @@
     		},
     		createComments(){
     			var url = window.Laravel.basePath;
-    			alert(this.videoId + this.body);
+    			//alert(this.videoId + this.body);
     			axios.post(url+'video/comments',{ videoId:this.videoId, body:this.body }).then(response=>{
     				this.body='';
     				//console.log(response.data);

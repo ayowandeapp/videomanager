@@ -1978,6 +1978,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
     _GetVideo__WEBPACK_IMPORTED_MODULE_2___default()({
+      apikey: '',
       videoId: this.$route.params.id
     }, function (response) {
       console.log(response);
@@ -2067,7 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
     _search__WEBPACK_IMPORTED_MODULE_1___default()({
-      apikey: 'AIzaSyAFn9IUTghHLVO2ueKCiz_zYW2q0RuBYUg',
+      apikey: '',
       term: 'laravel repository',
       items: 10
     }, function (response) {
@@ -2078,7 +2079,7 @@ __webpack_require__.r(__webpack_exports__);
     handleSearch: function handleSearch() {
       var _this2 = this;
       _search__WEBPACK_IMPORTED_MODULE_1___default()({
-        apikey: 'AIzaSyAFn9IUTghHLVO2ueKCiz_zYW2q0RuBYUg',
+        apikey: '',
         term: this.searchInput,
         items: 10
       }, function (response) {
@@ -2128,7 +2129,7 @@ __webpack_require__.r(__webpack_exports__);
     createComments: function createComments() {
       var _this3 = this;
       var url = window.Laravel.basePath;
-      alert(this.videoId + this.body);
+      //alert(this.videoId + this.body);
       axios.post(url + 'video/comments', {
         videoId: this.videoId,
         body: this.body
@@ -2507,6 +2508,7 @@ var render = function render() {
     },
     on: {
       keyup: function keyup($event) {
+        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) return null;
         return _vm.handleSearch();
       },
       input: function input($event) {
@@ -2621,7 +2623,7 @@ var render = function render() {
         href: "#"
       }
     }, [_vm._v("Button")])])])]);
-  }), _vm._v(" "), _vm._m(1)], 2)]);
+  })], 2)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -2629,25 +2631,6 @@ var staticRenderFns = [function () {
   return _c("h6", {
     staticClass: "sub-title"
   }, [_c("b", [_vm._v("Add Comment")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-lg-12"
-  }, [_c("div", {
-    staticClass: "card text-white bg-dark"
-  }, [_c("div", {
-    staticClass: "card-body"
-  }, [_c("h3", {
-    staticClass: "card-title font-20 mt-0"
-  }, [_vm._v("Special title treatment")]), _vm._v(" "), _c("p", {
-    staticClass: "card-text"
-  }, [_vm._v("With supporting text below as a natural lead-in to\n                            additional content.")]), _vm._v(" "), _c("a", {
-    staticClass: "btn btn-danger",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Button")])])])]);
 }];
 render._withStripped = true;
 
@@ -62330,13 +62313,13 @@ __webpack_require__.r(__webpack_exports__);
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 var BASE_URL = 'https://www.googleapis.com/youtube/v3/videos';
 module.exports = function (options, callback) {
-  // if (!options.apikey) {
-  // 	throw new Error('youtube search require a key');
-  // }
+  if (!options.apikey) {
+    throw new Error('youtube search require a key');
+  }
   //alert(options.videoId);
   var params = {
     part: 'snippet',
-    key: 'AIzaSyAFn9IUTghHLVO2ueKCiz_zYW2q0RuBYUg',
+    key: options.apikey,
     id: options.videoId,
     type: 'video'
   };

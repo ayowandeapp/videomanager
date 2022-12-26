@@ -2,13 +2,13 @@ let axios = require('axios');
 let BASE_URL = 'https://www.googleapis.com/youtube/v3/videos';
 
 module.exports = function (options, callback){
-	// if (!options.apikey) {
-	// 	throw new Error('youtube search require a key');
-	// }
+	if (!options.apikey) {
+		throw new Error('youtube search require a key');
+	}
 	//alert(options.videoId);
 	let params = {
 		part: 'snippet',
-		key: 'AIzaSyAFn9IUTghHLVO2ueKCiz_zYW2q0RuBYUg',
+		key: options.apikey,
 		id: options.videoId,
 		type: 'video'
 

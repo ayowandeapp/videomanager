@@ -52,6 +52,7 @@
     	},
     	created() {   		
     		GetVideo({
+    			apikey: '',
     			videoId: this.$route.params.id
     		},
     		response => {
