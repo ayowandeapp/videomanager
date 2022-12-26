@@ -17,6 +17,12 @@
 			</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<playlists></playlists>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-lg-12">
 				<comments v-bind:videoId="videoId"></comments>
@@ -26,12 +32,14 @@
 </template>
 <script>
 	import Comments from './comments/Comments.vue';
+	import Playlists from './playlist/Playlist.vue';
 	import GetVideo from './GetVideo';
 
 
     export default {
     	components: {
     		'comments': Comments,
+    		'playlists': Playlists,
 
     	},
     	data(){
